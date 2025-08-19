@@ -1,0 +1,326 @@
+body {
+    background: #181014;
+    color: #f8f8f8;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #1a0a0a;
+    padding: 30px 0 15px 0;
+    text-align: center;
+    border-bottom: 2px solid #a3001a;
+    box-shadow: 0 2px 16px #000a;
+}
+
+header h1 {
+    color: #ff2d2d;
+    margin: 0 0 10px 0;
+    letter-spacing: 2px;
+    font-size: 2.5em;
+    text-shadow: 0 0 16px #a3001a88;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+nav a {
+    color: #ff2d2d;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 
+        color 0.2s, 
+        background 0.2s, 
+        border 0.2s, 
+        box-shadow 0.2s;
+    padding: 8px 18px;
+    border: 2px solid #ff2d2d;
+    border-radius: 6px;
+    background: transparent;
+    margin: 0 2px;
+    box-shadow: 0 2px 8px #a3001a33;
+    cursor: pointer;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #fff;
+    background: #ff2d2d;
+    border-color: #fff;
+    box-shadow: 0 4px 16px #ff2d2d66;
+}
+
+footer {
+    background: #1a0a0a;
+    color: #a97c7c;
+    text-align: center;
+    padding: 18px 0;
+    margin-top: 40px;
+    border-top: 2px solid #a3001a;
+    font-size: 0.95em;
+    box-shadow: 0 -2px 16px #000a;
+}
+
+/* Style pour la modale */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    overflow: auto;
+    background: rgba(24,16,20,0.92);
+}
+.modal-content {
+    background: #1a0a0a;
+    margin: 8% auto;
+    padding: 30px 25px;
+    border-radius: 16px;
+    max-width: 400px;
+    color: #f8f8f8;
+    box-shadow: 0 2px 24px #a3001a88;
+    position: relative;
+    text-align: center;
+    border: 2px solid #ff2d2d;
+    animation: modalPop 0.3s;
+}
+@keyframes modalPop {
+    0% { transform: scale(0.8); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+.close {
+    color: #ff2d2d;
+    position: absolute;
+    top: 10px; right: 18px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+.close:hover {
+    color: #fff;
+}
+
+/* Pizzas */
+.pizza-slots {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 60px 0 40px 0;
+    flex-wrap: wrap;
+}
+
+.pizza-card {
+    background: linear-gradient(145deg, #1a0a0a 70%, #a3001a22 100%);
+    border-radius: 20px;
+    box-shadow: 0 0 32px 8px #a3001a55, 0 2px 24px #000a;
+    width: 270px;
+    padding: 0 0 18px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 2px solid #a3001a;
+}
+
+.pizza-card:hover {
+    transform: translateY(-8px) scale(1.03);
+    box-shadow: 0 0 48px 12px #ff2d2dcc, 0 2px 32px #000c;
+    border-color: #ff2d2d;
+}
+
+.pizza-img-wrap {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    background: #2a1010;
+    box-shadow: 0 0 24px #a3001a44;
+}
+
+.pizza-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.3s;
+}
+
+.pizza-card:hover .pizza-img {
+    transform: scale(1.07) rotate(-2deg);
+}
+
+.pizza-price {
+    position: absolute;
+    bottom: 10px;
+    right: 14px;
+    background: #ff2d2d;
+    color: #fff;
+    font-weight: bold;
+    padding: 6px 14px;
+    border-radius: 16px;
+    font-size: 1.1em;
+    box-shadow: 0 2px 12px #a3001a88;
+    letter-spacing: 1px;
+    border: 2px solid #fff2;
+}
+
+.pizza-card h2 {
+    color: #ff2d2d;
+    margin: 18px 0 8px 0;
+    font-size: 1.4em;
+    letter-spacing: 1px;
+    text-shadow: 0 0 8px #a3001a55;
+}
+
+.pizza-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px 0;
+    color: #fff;
+    font-size: 1.05em;
+}
+
+.pizza-card ul li {
+    margin-bottom: 2px;
+}
+
+.pizza-sizes {
+    display: flex;
+    justify-content: space-between;
+    width: 85%;
+    margin: 0 auto;
+    color: #ffb3b3;
+    font-size: 1.05em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-top: 8px;
+}
+
+/* Custom pizza intro */
+.custom-intro {
+    margin: 0 auto 40px auto;
+    text-align: center;
+    max-width: 600px;
+    background: #1a0a0a;
+    border-radius: 16px;
+    border: 2px solid #a3001a;
+    box-shadow: 0 2px 16px #a3001a33;
+    padding: 28px 18px 24px 18px;
+}
+
+.custom-intro p {
+    font-size: 1.18em;
+    color: #fff;
+    margin-bottom: 18px;
+    letter-spacing: 0.5px;
+}
+
+.custom-intro .highlight {
+    color: #ff2d2d;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.custom-btn {
+    background: #ff2d2d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 32px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 12px #a3001a55;
+    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.custom-btn:hover {
+    background: #fff;
+    color: #ff2d2d;
+    box-shadow: 0 4px 24px #ff2d2d88;
+}
+
+/* Custom pizza dans la modale */
+#modal-custom .modal-content {
+    max-width: 420px;
+    padding: 36px 30px 28px 30px;
+}
+
+#modal-custom h2 {
+    color: #ff2d2d;
+    margin-bottom: 18px;
+    letter-spacing: 1px;
+}
+
+.size-choice {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.size-choice label {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.base-choice {
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.base-choice label {
+    font-size: 1.1em;
+    cursor: pointer;
+}
+
+.ingredients-choice {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+.ingredients-choice label {
+    font-size: 1.05em;
+    cursor: pointer;
+    background: #2a1010;
+    border-radius: 8px;
+    padding: 6px 14px;
+    transition: background 0.2s, color 0.2s;
+    border: 1.5px solid #a3001a;
+    margin-bottom: 4px;
+}
+
+.ingredients-choice input[type="checkbox"]:checked + label,
+.ingredients-choice label:hover {
+    background: #ff2d2d;
+    color: #fff;
+    border-color: #fff;
+}
+
+.custom-price {
+    font-size: 1.3em;
+    color: #ff2d2d;
+    font-weight: bold;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    background: #2a1010;
+    border-radius: 8px;
+    padding: 10px 0;
+    box-shadow: 0 2px 8px #a3001a44;
+}

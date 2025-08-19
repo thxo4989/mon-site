@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizzaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Pizzaria</h1>
+        <nav>
+            <ul>
+                <li><a href="#" id="open-apropos">À propos</a></li>
+                <li><a href="#" id="open-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="pizza-slots">
+            <!-- Peperonni -->
+            <div class="pizza-card">
+                <div class="pizza-img-wrap">
+                    <img src="https://tse2.mm.bing.net/th/id/OIP.8No7LgYczYc66dDgftC_BwHaE8?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Peperonni" class="pizza-img">
+                    <span class="pizza-price">13€ / 15€</span>
+                </div>
+                <h2>Peperonni</h2>
+                <ul>
+                    <li>Base crème</li>
+                    <li>Pepperoni</li>
+                    <li>Mozzarella</li>
+                </ul>
+                <div class="pizza-sizes">
+                    <span>Moyenne : 13€</span>
+                    <span>XL : 15€</span>
+                </div>
+            </div>
+            <!-- Provincial -->
+            <div class="pizza-card">
+                <div class="pizza-img-wrap">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.jp1Pe7RoQW1zXlSUATRYeQHaEo?rs=1&pid=ImgDetMain&o=7&rm=3" alt="Provincial" class="pizza-img">
+                    <span class="pizza-price">14€ / 16,50€</span>
+                </div>
+                <h2>Provincial</h2>
+                <ul>
+                    <li>Base tomate</li>
+                    <li>Olives</li>
+                    <li>Tomate</li>
+                    <li>Poivron</li>
+                </ul>
+                <div class="pizza-sizes">
+                    <span>Moyenne : 14€</span>
+                    <span>XL : 16,50€</span>
+                </div>
+            </div>
+            <!-- Nature -->
+            <div class="pizza-card">
+                <div class="pizza-img-wrap">
+                    <img src="https://www.biggerbolderbaking.com/wp-content/uploads/2021/02/New-York-Style-Pizza-Thumbnail1-scaled.jpg" alt="Nature" class="pizza-img">
+                    <span class="pizza-price">10€ / 12€</span>
+                </div>
+                <h2>Nature</h2>
+                <ul>
+                    <li>Base tomate</li>
+                    <li>Fromages</li>
+                </ul>
+                <div class="pizza-sizes">
+                    <span>Moyenne : 10€</span>
+                    <span>XL : 12€</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom-intro">
+            <p>
+                Si vous ne trouvez pas votre plaisir avec nos multiples choix de pizzas,<br>
+                vous pouvez créer <span class="highlight">VOTRE</span> propre pizza&nbsp;!
+            </p>
+            <button id="open-custom" class="custom-btn">Personnaliser ma pizza</button>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Pizzaria. Tous droits réservés.</p>
+    </footer>
+
+    <!-- Modale Custom Pizza -->
+    <div id="modal-custom" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-custom">&times;</span>
+            <h2>Personnalise ta pizza</h2>
+            <form id="pizza-form">
+                <div class="size-choice">
+                    <label>
+                        <input type="radio" name="size" value="moyenne" checked>
+                        Moyenne
+                    </label>
+                    <label>
+                        <input type="radio" name="size" value="xl">
+                        XL (+2€)
+                    </label>
+                </div>
+                <div class="base-choice">
+                    <label>
+                        <input type="radio" name="base" value="crème" checked>
+                        Base crème
+                    </label>
+                    <label>
+                        <input type="radio" name="base" value="tomate">
+                        Base tomate
+                    </label>
+                </div>
+                <div class="ingredients-choice">
+                    <label><input type="checkbox" value="Pepperoni"> Pepperoni</label>
+                    <label><input type="checkbox" value="Jambon"> Jambon</label>
+                    <label><input type="checkbox" value="Mozzarella"> Mozzarella</label>
+                    <label><input type="checkbox" value="Poivron"> Poivron</label>
+                    <label><input type="checkbox" value="Tomate"> Tomate</label>
+                    <label><input type="checkbox" value="Olives"> Olives</label>
+                </div>
+                <div class="custom-price">
+                    Prix total : <span id="total-price">10,00€</span>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modale À propos -->
+    <div id="modal-apropos" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-apropos">&times;</span>
+            <h2>À propos</h2>
+            <p>Ici, vous pouvez écrire la présentation de votre pizzeria.</p>
+        </div>
+    </div>
+    <!-- Modale Contact -->
+    <div id="modal-contact" class="modal">
+        <div class="modal-content">
+            <span class="close" data-close="modal-contact">&times;</span>
+            <h2>Contact</h2>
+            <p>Email : TestModeleDeSite@gmail.com<br><br>
+               Téléphone : 01 23 45 67 89<br><br>
+               Adresse : 123 Rue de la Pizzaria, 75000 Paris
+            </p>
+        </div>
+    </div>
+    <script>
+        // Ouvre les modales
+        document.getElementById('open-custom').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('modal-custom').style.display = "block";
+        };
+        document.getElementById('open-apropos').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('modal-apropos').style.display = "block";
+        };
+        document.getElementById('open-contact').onclick = function(e) {
+            e.preventDefault();
+            document.getElementById('modal-contact').style.display = "block";
+        };
+        // Ferme les modales
+        document.querySelectorAll('.close').forEach(function(btn) {
+            btn.onclick = function() {
+                document.getElementById(this.dataset.close).style.display = "none";
+            }
+        });
+        window.onclick = function(event) {
+            document.querySelectorAll('.modal').forEach(function(modal) {
+                if (event.target == modal) modal.style.display = "none";
+            });
+        };
+
+        // Personnalisation pizza
+        const ingredientCheckboxes = document.querySelectorAll('#modal-custom .ingredients-choice input[type="checkbox"]');
+        const totalPriceSpan = document.getElementById('total-price');
+        const sizeRadios = document.querySelectorAll('#modal-custom .size-choice input[type="radio"]');
+        const BASE_PRICE = 10;
+        const INGREDIENT_PRICE = 1.5;
+        const XL_SUP = 2;
+
+        function updatePrice() {
+            let count = 0;
+            ingredientCheckboxes.forEach(cb => { if (cb.checked) count++; });
+            let total = BASE_PRICE + count * INGREDIENT_PRICE;
+            const size = document.querySelector('#modal-custom .size-choice input[name="size"]:checked').value;
+            if (size === "xl") total += XL_SUP;
+            totalPriceSpan.textContent = total.toFixed(2).replace('.', ',') + '€';
+        }
+
+        ingredientCheckboxes.forEach(cb => cb.addEventListener('change', updatePrice));
+        sizeRadios.forEach(radio => radio.addEventListener('change', updatePrice));
+        updatePrice();
+    </script>
+</body>
+</html>
