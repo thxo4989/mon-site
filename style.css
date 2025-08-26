@@ -22,41 +22,6 @@ header h1 {
     text-shadow: 0 0 16px #a3001a88;
 }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-}
-
-nav a {
-    color: #ff2d2d;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 
-        color 0.2s, 
-        background 0.2s, 
-        border 0.2s, 
-        box-shadow 0.2s;
-    padding: 8px 18px;
-    border: 2px solid #ff2d2d;
-    border-radius: 6px;
-    background: transparent;
-    margin: 0 2px;
-    box-shadow: 0 2px 8px #a3001a33;
-    cursor: pointer;
-    display: inline-block;
-}
-
-nav a:hover {
-    color: #fff;
-    background: #ff2d2d;
-    border-color: #fff;
-    box-shadow: 0 4px 16px #ff2d2d66;
-}
-
 footer {
     background: #1a0a0a;
     color: #a97c7c;
@@ -68,7 +33,7 @@ footer {
     box-shadow: 0 -2px 16px #000a;
 }
 
-/* Style pour la modale */
+/* Modale */
 .modal {
     display: none;
     position: fixed;
@@ -129,6 +94,7 @@ footer {
     position: relative;
     transition: transform 0.2s, box-shadow 0.2s;
     border: 2px solid #a3001a;
+    height: 100%;
 }
 
 .pizza-card:hover {
@@ -207,6 +173,20 @@ footer {
     margin-top: 8px;
 }
 
+/* Aligner le bouton Commander en bas de chaque carte */
+.pizza-card-btn-wrap {
+    margin-top: auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.pizza-card .custom-btn.commander-btn {
+    width: 90%;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
 /* Custom pizza intro */
 .custom-intro {
     margin: 0 auto 40px auto;
@@ -252,12 +232,14 @@ footer {
 }
 
 /* Custom pizza dans la modale */
-#modal-custom .modal-content {
+#modal-custom .modal-content,
+#modal-personnalisee .modal-content {
     max-width: 420px;
     padding: 36px 30px 28px 30px;
 }
 
-#modal-custom h2 {
+#modal-custom h2,
+#modal-personnalisee h2 {
     color: #ff2d2d;
     margin-bottom: 18px;
     letter-spacing: 1px;

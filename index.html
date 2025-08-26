@@ -10,9 +10,9 @@
     <header>
         <h1>Pizzaria</h1>
         <nav>
-            <ul>
-                <li><a href="#" id="open-apropos">À propos</a></li>
-                <li><a href="#" id="open-contact">Contact</a></li>
+            <ul style="display:flex;justify-content:center;gap:20px;list-style:none;padding:0;margin:18px 0 0 0;">
+                <li><button id="open-apropos" class="custom-btn" style="background:transparent;color:#ff2d2d;border:2px solid #ff2d2d;">À propos</button></li>
+                <li><button id="open-contact" class="custom-btn" style="background:transparent;color:#ff2d2d;border:2px solid #ff2d2d;">Contact</button></li>
             </ul>
         </nav>
     </header>
@@ -35,6 +35,16 @@
                     <span>Moyenne : 13€</span>
                     <span>XL : 15€</span>
                 </div>
+                <div class="pizza-card-btn-wrap">
+                    <button class="custom-btn commander-btn" 
+                        data-pizza="Peperonni" 
+                        data-base="Base crème"
+                        data-ingredients="Pepperoni, Mozzarella"
+                        data-prix-m="13"
+                        data-prix-xl="15">
+                        Commander
+                    </button>
+                </div>
             </div>
             <!-- Provincial -->
             <div class="pizza-card">
@@ -53,6 +63,16 @@
                     <span>Moyenne : 14€</span>
                     <span>XL : 16,50€</span>
                 </div>
+                <div class="pizza-card-btn-wrap">
+                    <button class="custom-btn commander-btn" 
+                        data-pizza="Provincial" 
+                        data-base="Base tomate"
+                        data-ingredients="Olives, Tomate, Poivron"
+                        data-prix-m="14"
+                        data-prix-xl="16.5">
+                        Commander
+                    </button>
+                </div>
             </div>
             <!-- Nature -->
             <div class="pizza-card">
@@ -69,6 +89,16 @@
                     <span>Moyenne : 10€</span>
                     <span>XL : 12€</span>
                 </div>
+                <div class="pizza-card-btn-wrap">
+                    <button class="custom-btn commander-btn" 
+                        data-pizza="Nature" 
+                        data-base="Base tomate"
+                        data-ingredients="Fromages"
+                        data-prix-m="10"
+                        data-prix-xl="12">
+                        Commander
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -83,45 +113,99 @@
 
     <footer>
         <p>&copy; 2025 Pizzaria. Tous droits réservés.</p>
+    <footer>
+        <p>&copy; 2025 Pizzaria. Tous droits réservés.</p>
     </footer>
-
-    <!-- Modale Custom Pizza -->
     <div id="modal-custom" class="modal">
         <div class="modal-content">
-            <span class="close" data-close="modal-custom">&times;</span>
-            <h2>Personnalise ta pizza</h2>
-            <form id="pizza-form">
-                <div class="size-choice">
+            <span class="close" id="close-modal-custom">&times;</span>
+            <h2 id="modal-title">Commander</h2>
+            <form id="pizza-form" action="https://formspree.io/f/xblajppn" method="POST">
+                <div>
                     <label>
-                        <input type="radio" name="size" value="moyenne" checked>
+                        <strong>Pizza :</strong>
+                        <input type="text" name="pizza" id="pizza-name" readonly style="background:#222;color:#fff;border:none;">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <strong>Base :</strong>
+                        <input type="text" name="base" id="pizza-base" readonly style="background:#222;color:#fff;border:none;">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        <strong>Ingrédients :</strong>
+                        <input type="text" name="ingredients" id="pizza-ingredients" readonly style="background:#222;color:#fff;border:none;">
+                    </label>
+                </div>
+                <div class="size-choice" style="margin:12px 0;">
+                    <label>
+                        <input type="radio" name="size" value="Moyenne" id="size-m" checked>
                         Moyenne
                     </label>
                     <label>
-                        <input type="radio" name="size" value="xl">
+                        <input type="radio" name="size" value="XL" id="size-xl">
+                        XL
+                    </label>
+                </div>
+                <div class="custom-price">
+                    Prix total : <span id="total-price">0€</span>
+                </div>
+                <input type="hidden" name="pizza_details" id="pizza-details">
+                <input type="hidden" name="_subject" value="Nouvelle commande de pizza">
+                <input type="hidden" name="_cc" value="theo.foucault.huet2009@gmail.com">
+                <input type="email" name="email" placeholder="Votre email" required style="margin-top:12px;">
+                <button type="submit" class="custom-btn" style="margin-top:12px;">Commander</button>
+                <div id="form-message" style="margin-top:10px;color:#ff2d2d;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modale Personnalisation -->
+    <div id="modal-personnalisee" class="modal">
+        <div class="modal-content">
+            <span class="close" id="close-modal-personnalisee">&times;</span>
+            <h2>Personnalise ta pizza</h2>
+            <form id="form-personnalisee" action="https://formspree.io/f/xblajppn" method="POST">
+                <div class="size-choice">
+                    <label>
+                        <input type="radio" name="size" value="Moyenne" checked>
+                        Moyenne
+                    </label>
+                    <label>
+                        <input type="radio" name="size" value="XL">
                         XL (+2€)
                     </label>
                 </div>
                 <div class="base-choice">
                     <label>
-                        <input type="radio" name="base" value="crème" checked>
+                        <input type="radio" name="base" value="Crème" checked>
                         Base crème
                     </label>
                     <label>
-                        <input type="radio" name="base" value="tomate">
+                        <input type="radio" name="base" value="Tomate">
                         Base tomate
                     </label>
                 </div>
                 <div class="ingredients-choice">
-                    <label><input type="checkbox" value="Pepperoni"> Pepperoni</label>
-                    <label><input type="checkbox" value="Jambon"> Jambon</label>
-                    <label><input type="checkbox" value="Mozzarella"> Mozzarella</label>
-                    <label><input type="checkbox" value="Poivron"> Poivron</label>
-                    <label><input type="checkbox" value="Tomate"> Tomate</label>
-                    <label><input type="checkbox" value="Olives"> Olives</label>
+                    <label><input type="checkbox" name="ingredients" value="Pepperoni"> Pepperoni</label>
+                    <label><input type="checkbox" name="ingredients" value="Jambon"> Jambon</label>
+                    <label><input type="checkbox" name="ingredients" value="Mozzarella"> Mozzarella</label>
+                    <label><input type="checkbox" name="ingredients" value="Poivron"> Poivron</label>
+                    <label><input type="checkbox" name="ingredients" value="Tomate"> Tomate</label>
+                    <label><input type="checkbox" name="ingredients" value="Olives"> Olives</label>
                 </div>
                 <div class="custom-price">
-                    Prix total : <span id="total-price">10,00€</span>
+                    Prix total : <span id="total-price-personnalisee">10,00€</span>
                 </div>
+                <input type="hidden" name="pizza_details" id="pizza-details-personnalisee">
+                <input type="hidden" name="pizza" value="Pizza personnalisée">
+                <input type="hidden" name="_subject" value="Nouvelle commande de pizza personnalisée">
+                <input type="hidden" name="_cc" value="theo.foucault.huet2009@gmail.com">
+                <input type="email" name="email" placeholder="Votre email" required style="margin-top:12px;">
+                <button type="submit" class="custom-btn" style="margin-top:12px;">Commander</button>
+                <div id="form-message-personnalisee" style="margin-top:10px;color:#ff2d2d;"></div>
             </form>
         </div>
     </div>
@@ -129,15 +213,18 @@
     <!-- Modale À propos -->
     <div id="modal-apropos" class="modal">
         <div class="modal-content">
-            <span class="close" data-close="modal-apropos">&times;</span>
+            <span class="close" id="close-modal-apropos">&times;</span>
             <h2>À propos</h2>
-            <p>Ici, vous pouvez écrire la présentation de votre pizzeria.</p>
+            <p>Bienvenue chez Pizzaria !<br>
+            Ici, vous pouvez écrire la présentation de votre pizzeria.<br>
+            Pizzas artisanales, ingrédients frais, et service rapide !</p>
         </div>
     </div>
+
     <!-- Modale Contact -->
     <div id="modal-contact" class="modal">
         <div class="modal-content">
-            <span class="close" data-close="modal-contact">&times;</span>
+            <span class="close" id="close-modal-contact">&times;</span>
             <h2>Contact</h2>
             <p>Email : TestModeleDeSite@gmail.com<br><br>
                Téléphone : 01 23 45 67 89<br><br>
@@ -145,52 +232,177 @@
             </p>
         </div>
     </div>
+
     <script>
-        // Ouvre les modales
-        document.getElementById('open-custom').onclick = function(e) {
-            e.preventDefault();
-            document.getElementById('modal-custom').style.display = "block";
-        };
-        document.getElementById('open-apropos').onclick = function(e) {
-            e.preventDefault();
+        // Ouvre les modales À propos et Contact
+        document.getElementById('open-apropos').onclick = function() {
             document.getElementById('modal-apropos').style.display = "block";
         };
-        document.getElementById('open-contact').onclick = function(e) {
-            e.preventDefault();
+        document.getElementById('open-contact').onclick = function() {
             document.getElementById('modal-contact').style.display = "block";
         };
-        // Ferme les modales
-        document.querySelectorAll('.close').forEach(function(btn) {
-            btn.onclick = function() {
-                document.getElementById(this.dataset.close).style.display = "none";
+        document.getElementById('close-modal-apropos').onclick = function() {
+            document.getElementById('modal-apropos').style.display = "none";
+        };
+        document.getElementById('close-modal-contact').onclick = function() {
+            document.getElementById('modal-contact').style.display = "none";
+        };
+        // Ferme aussi si on clique à l'extérieur
+        window.addEventListener('click', function(event) {
+            if (event.target == document.getElementById('modal-apropos')) {
+                document.getElementById('modal-apropos').style.display = "none";
+            }
+            if (event.target == document.getElementById('modal-contact')) {
+                document.getElementById('modal-contact').style.display = "none";
             }
         });
+        // Ouvre la modale commande classique
+        document.querySelectorAll('.commander-btn').forEach(function(btn) {
+            btn.onclick = function() {
+                document.getElementById('modal-custom').style.display = "block";
+                document.getElementById('pizza-name').value = btn.getAttribute('data-pizza');
+                document.getElementById('pizza-base').value = btn.getAttribute('data-base');
+                document.getElementById('pizza-ingredients').value = btn.getAttribute('data-ingredients');
+                document.getElementById('size-m').checked = true;
+                document.getElementById('total-price').textContent = btn.getAttribute('data-prix-m').replace('.', ',') + "€";
+                document.getElementById('size-m').setAttribute('data-prix', btn.getAttribute('data-prix-m'));
+                document.getElementById('size-xl').setAttribute('data-prix', btn.getAttribute('data-prix-xl'));
+                document.getElementById('modal-title').textContent = "Commander " + btn.getAttribute('data-pizza');
+                document.getElementById('form-message').textContent = "";
+            }
+        });
+
+        // Fermer la modale commande classique
+        document.getElementById('close-modal-custom').onclick = function() {
+            document.getElementById('modal-custom').style.display = "none";
+        };
         window.onclick = function(event) {
-            document.querySelectorAll('.modal').forEach(function(modal) {
-                if (event.target == modal) modal.style.display = "none";
-            });
+            if (event.target == document.getElementById('modal-custom')) {
+                document.getElementById('modal-custom').style.display = "none";
+            }
+            if (event.target == document.getElementById('modal-personnalisee')) {
+                document.getElementById('modal-personnalisee').style.display = "none";
+            }
         };
 
-        // Personnalisation pizza
-        const ingredientCheckboxes = document.querySelectorAll('#modal-custom .ingredients-choice input[type="checkbox"]');
-        const totalPriceSpan = document.getElementById('total-price');
-        const sizeRadios = document.querySelectorAll('#modal-custom .size-choice input[type="radio"]');
+        // Met à jour le prix selon la taille (commande classique)
+        document.getElementById('size-m').onchange = document.getElementById('size-xl').onchange = function() {
+            let prix = this.getAttribute('data-prix');
+            document.getElementById('total-price').textContent = prix.replace('.', ',') + "€";
+        };
+
+        // Remplit le champ caché pizza_details avant envoi (commande classique)
+        document.getElementById('pizza-form').onsubmit = function(e) {
+            const pizza = document.getElementById('pizza-name').value;
+            const base = document.getElementById('pizza-base').value;
+            const ingredients = document.getElementById('pizza-ingredients').value;
+            const size = document.querySelector('input[name="size"]:checked').value;
+            const prix = document.getElementById('total-price').textContent;
+            document.getElementById('pizza-details').value =
+                `Pizza: ${pizza}\nTaille: ${size}\nBase: ${base}\nIngrédients: ${ingredients}\nPrix: ${prix}`;
+        };
+
+        // Envoi AJAX + message confirmation (commande classique)
+        document.getElementById('pizza-form').addEventListener('submit', function(e) {
+            var form = this;
+            var message = document.getElementById('form-message');
+            e.preventDefault();
+            // Remplir le champ caché
+            const pizza = document.getElementById('pizza-name').value;
+            const base = document.getElementById('pizza-base').value;
+            const ingredients = document.getElementById('pizza-ingredients').value;
+            const size = document.querySelector('input[name="size"]:checked').value;
+            const prix = document.getElementById('total-price').textContent;
+            document.getElementById('pizza-details').value =
+                `Pizza: ${pizza}\nTaille: ${size}\nBase: ${base}\nIngrédients: ${ingredients}\nPrix: ${prix}`;
+
+            var data = new FormData(form);
+            fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    message.textContent = "Commande envoyée ! Vous recevrez une confirmation par mail.";
+                    form.reset();
+                } else {
+                    message.textContent = "Erreur lors de l'envoi. Essayez encore.";
+                }
+            }).catch(() => {
+                message.textContent = "Erreur lors de l'envoi. Essayez encore.";
+            });
+        });
+
+        // Ouvre la modale personnalisation
+        document.getElementById('open-custom').onclick = function() {
+            document.getElementById('modal-personnalisee').style.display = "block";
+            document.getElementById('form-message-personnalisee').textContent = "";
+        };
+        // Fermer la modale personnalisation
+        document.getElementById('close-modal-personnalisee').onclick = function() {
+            document.getElementById('modal-personnalisee').style.display = "none";
+        };
+
+        // Prix pizza personnalisée
         const BASE_PRICE = 10;
         const INGREDIENT_PRICE = 1.5;
         const XL_SUP = 2;
+        const ingredientCheckboxes = document.querySelectorAll('#modal-personnalisee .ingredients-choice input[type="checkbox"]');
+        const totalPriceSpan = document.getElementById('total-price-personnalisee');
+        const sizeRadios = document.querySelectorAll('#modal-personnalisee .size-choice input[type="radio"]');
 
-        function updatePrice() {
+        function updatePricePerso() {
             let count = 0;
             ingredientCheckboxes.forEach(cb => { if (cb.checked) count++; });
             let total = BASE_PRICE + count * INGREDIENT_PRICE;
-            const size = document.querySelector('#modal-custom .size-choice input[name="size"]:checked').value;
-            if (size === "xl") total += XL_SUP;
+            const size = document.querySelector('#modal-personnalisee .size-choice input[name="size"]:checked').value;
+            if (size === "XL") total += XL_SUP;
             totalPriceSpan.textContent = total.toFixed(2).replace('.', ',') + '€';
         }
+        ingredientCheckboxes.forEach(cb => cb.addEventListener('change', updatePricePerso));
+        sizeRadios.forEach(radio => radio.addEventListener('change', updatePricePerso));
+        updatePricePerso();
 
-        ingredientCheckboxes.forEach(cb => cb.addEventListener('change', updatePrice));
-        sizeRadios.forEach(radio => radio.addEventListener('change', updatePrice));
-        updatePrice();
+        // Remplit le champ caché pizza_details avant envoi (personnalisée)
+        document.getElementById('form-personnalisee').onsubmit = function(e) {
+            const size = document.querySelector('#modal-personnalisee input[name="size"]:checked').value;
+            const base = document.querySelector('#modal-personnalisee input[name="base"]:checked').value;
+            const ingredients = Array.from(document.querySelectorAll('#modal-personnalisee .ingredients-choice input[type="checkbox"]:checked')).map(cb => cb.value).join(', ') || 'Aucun';
+            const prix = document.getElementById('total-price-personnalisee').textContent;
+            document.getElementById('pizza-details-personnalisee').value =
+                `Pizza: personnalisée\nTaille: ${size}\nBase: ${base}\nIngrédients: ${ingredients}\nPrix: ${prix}`;
+        };
+
+        // Envoi AJAX + message confirmation (personnalisée)
+        document.getElementById('form-personnalisee').addEventListener('submit', function(e) {
+            var form = this;
+            var message = document.getElementById('form-message-personnalisee');
+            e.preventDefault();
+            // Remplir le champ caché
+            const size = document.querySelector('#modal-personnalisee input[name="size"]:checked').value;
+            const base = document.querySelector('#modal-personnalisee input[name="base"]:checked').value;
+            const ingredients = Array.from(document.querySelectorAll('#modal-personnalisee .ingredients-choice input[type="checkbox"]:checked')).map(cb => cb.value).join(', ') || 'Aucun';
+            const prix = document.getElementById('total-price-personnalisee').textContent;
+            document.getElementById('pizza-details-personnalisee').value =
+                `Pizza: personnalisée\nTaille: ${size}\nBase: ${base}\nIngrédients: ${ingredients}\nPrix: ${prix}`;
+
+            var data = new FormData(form);
+            fetch(form.action, {
+                method: "POST",
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    message.textContent = "Commande envoyée ! Vous recevrez une confirmation par mail.";
+                    form.reset();
+                    updatePricePerso();
+                } else {
+                    message.textContent = "Erreur lors de l'envoi. Essayez encore.";
+                }
+            }).catch(() => {
+                message.textContent = "Erreur lors de l'envoi. Essayez encore.";
+            });
+        });
     </script>
 </body>
 </html>
